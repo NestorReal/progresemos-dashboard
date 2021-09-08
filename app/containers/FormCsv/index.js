@@ -82,7 +82,7 @@ export function FormCsv(props) {
     for (let i = 0; i < event.target.files.length; i += 1) {
       csvFile[i] = event.target.files[i];
     }
-    csvFile = csvFile.filter(image => image.name.match(/\.(xls|xslx)$/));
+    csvFile = csvFile.filter(image => image.name.match(/\.(xls|xlsx)$/));
     setCsv(csvFile[0]);
     // console.log(csvFile[0]);
   };
