@@ -120,11 +120,6 @@ export function Login(props) {
               <Divider />
             </Box>
           </CardContent>
-          <CardMedia
-            className={classes.media}
-            image="https://www.esan.edu.pe/apuntes-empresariales/2018/08/24/1500x844_optimizar_rutas_transporte.jpg"
-            title="Cover"
-          />
         </Card>
       </Container>
     </div>
