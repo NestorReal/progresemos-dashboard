@@ -9,10 +9,10 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
-// import HomePage from 'containers/HomePage/Loadable';
+import Login from 'containers/Login';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Dashboard from 'containers/Dashboard';
+import ProtectedRoute from 'components/ProtectedRoute';
 
 import GlobalStyle from '../../global-styles';
 
@@ -20,7 +20,8 @@ export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/auth" component={Login} />
+        <ProtectedRoute path="/:section?/:subsection?" component={Dashboard} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
