@@ -5,8 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the dashboard state domain
  */
 
-const selectDashboardDomain = state => state.dashboard || initialState;
-
+const selectDashboardDomain = state => state.dashoard || initialState;
 /**
  * Other specific selectors
  */
@@ -18,7 +17,7 @@ const selectDashboardDomain = state => state.dashboard || initialState;
 const makeSelectDashboard = () =>
   createSelector(
     selectDashboardDomain,
-    substate => substate,
+    substate => substate.toJS(),
   );
 
 export default makeSelectDashboard;

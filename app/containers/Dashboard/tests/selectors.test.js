@@ -1,3 +1,4 @@
+// import { fromJS } from 'immutable';
 // import { selectDashboardDomain } from '../selectors';
 
 describe('selectDashboardDomain', () => {
