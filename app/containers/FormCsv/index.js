@@ -11,6 +11,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import Loader from 'components/Loader';
+import Table from 'components/Table';
 // import Link from '@material-ui/core/Link';
 import Notifications from 'containers/Notifications';
 import GridMaterial from '@material-ui/core/Grid';
@@ -84,104 +85,105 @@ export function FormCsv(props) {
     }
     csvFile = csvFile.filter(image => image.name.match(/\.(xls|xlsx)$/));
     setCsv(csvFile[0]);
-    // console.log(csvFile[0]);
   };
-
+  let dataComplete = [];
+  if(Object.keys(props.formCsv.events).length !== 0){
+    dataComplete = props.formCsv.events.fileJSON.data;
+  }
   useEffect(() => {}, []);
-
   const loader = props.formCsv.isLoading ? (
     <Loader message="Procesando datos" />
   ) : null;
-  // const preventDefault = (event) => event.preventDefault();
   return (
     <GridMaterial>
       <Notifications />
       {loader}
-      <GridMaterial
-        className={classes.container}
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
-        <GridMaterial>
-          <GridMaterial
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
-            <GridMaterial item>
-              <ThemeProvider theme={theme}>
-                <Typography variant="h3" className={classes.title}>
-                  Sube tu fichero
-                </Typography>
-              </ThemeProvider>
-            </GridMaterial>
-          </GridMaterial>
-          <br />
-          <br />
+      {Object.keys(props.formCsv.events).length !== 0 ? 
+        <Table data={dataComplete} /> : (<GridMaterial
+          className={classes.container}
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
           <GridMaterial>
             <GridMaterial
               container
-              direction="column"
+              direction="row"
               justify="center"
               alignItems="center"
-              spacing={3}
             >
               <GridMaterial item>
-                <div className={classes.root}>
-                  <input
-                    accept="*"
-                    className={classes.input}
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                    onChange={selectCsv}
-                  />
-                  <label htmlFor="contained-button-file">
+                <ThemeProvider theme={theme}>
+                  <Typography variant="h3" className={classes.title}>
+                  Sube tu fichero
+                  </Typography>
+                </ThemeProvider>
+              </GridMaterial>
+            </GridMaterial>
+            <br />
+            <br />
+            <GridMaterial>
+              <GridMaterial
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                spacing={3}
+              >
+                <GridMaterial item>
+                  <div className={classes.root}>
+                    <input
+                      accept="*"
+                      className={classes.input}
+                      id="contained-button-file"
+                      multiple
+                      type="file"
+                      onChange={selectCsv}
+                    />
+                    <label htmlFor="contained-button-file">
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        component="span"
+                      >
+                      Seleccionar archivo
+                      </Button>
+                    </label>
+                    <GridMaterial container justify="center">
+                      {csv !== null && csv !== undefined ? (
+                        <Typography variant="body2" align="center ">
+                          {csv.name}
+                        </Typography>
+                      ) : null}
+                    </GridMaterial>
+                    {csv === undefined ? (
+                      <Alert variant="filled" severity="error">
+                      Archivo invalido
+                      </Alert>
+                    ) : null}
+                    {csv ? (
+                      <Alert severity="success">Formato valido</Alert>
+                    ) : null}
+                  </div>
+                </GridMaterial>
+                {csv ? (
+                  <GridMaterial>
                     <Button
+                      className={classes.button}
+                      onClick={() => props.dispatch(postCsv(csv, props.history))}
                       variant="contained"
                       color="secondary"
-                      component="span"
+                      style={{ color: 'white' }}
                     >
-                      Seleccionar archivo
-                    </Button>
-                  </label>
-                  <GridMaterial container justify="center">
-                    {csv !== null && csv !== undefined ? (
-                      <Typography variant="body2" align="center ">
-                        {csv.name}
-                      </Typography>
-                    ) : null}
-                  </GridMaterial>
-                  {csv === undefined ? (
-                    <Alert variant="filled" severity="error">
-                      Archivo invalido
-                    </Alert>
-                  ) : null}
-                  {csv ? (
-                    <Alert severity="success">Formato valido</Alert>
-                  ) : null}
-                </div>
-              </GridMaterial>
-              {csv ? (
-                <GridMaterial>
-                  <Button
-                    className={classes.button}
-                    onClick={() => props.dispatch(postCsv(csv, props.history))}
-                    variant="contained"
-                    color="secondary"
-                    style={{ color: 'white' }}
-                  >
                     Enviar
-                  </Button>
-                </GridMaterial>
-              ) : null}
+                    </Button>
+                  </GridMaterial>
+                ) : null}
+              </GridMaterial>
             </GridMaterial>
           </GridMaterial>
-        </GridMaterial>
-      </GridMaterial>
+        </GridMaterial>)}
     </GridMaterial>
   );
 }
