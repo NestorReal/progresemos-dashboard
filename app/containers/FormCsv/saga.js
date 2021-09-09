@@ -25,8 +25,8 @@ export function* saveCsvSaga(action) {
     const response = yield call(request, requestURL, {
       method: 'POST',
       headers: {
-        "x-access-token": `${auth.getToken()}`,
-        Accept: 'multipar/form-data',
+        'x-access-token': `${auth.getToken()}`,
+        Accept: 'multipart/form-data',
       },
       body: formData,
     });

@@ -17,7 +17,6 @@ import {
   Container,
   Card,
   CardContent,
-  CardMedia,
   Divider,
   Typography,
   makeStyles,
