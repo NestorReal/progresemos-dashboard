@@ -16,6 +16,7 @@ const formCsvReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case constants.DEFAULT_ACTION:
+        draft.events = {};
         break;
       case constants.DATA_RETRIEVE_INIT:
         draft.isLoading = true;
