@@ -28,7 +28,7 @@ import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { postCsv } from './actions';
+import { postCsv, defaultAction } from './actions';
 import makeSelectFormCsv from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -94,6 +94,12 @@ export function FormCsv(props) {
   const loader = props.formCsv.isLoading ? (
     <Loader message="Procesando datos" />
   ) : null;
+
+  const cleanData = () => {
+    props.dispatch(defaultAction());
+    setCsv(null);
+  }
+
   return (
     <GridMaterial>
       <Notifications />
@@ -184,6 +190,18 @@ export function FormCsv(props) {
             </GridMaterial>
           </GridMaterial>
         </GridMaterial>)}
+      {Object.keys(props.formCsv.events).length !== 0 ?(
+        <GridMaterial container justify="center">
+          <Button
+            onClick={() => cleanData()}
+            variant="contained"
+            color="secondary"
+            style={{ color: 'white', margin: '10px' }}
+          >
+          Volver a calcular fichero
+          </Button>
+        </GridMaterial>
+      ) : null}
     </GridMaterial>
   );
 }
