@@ -24,10 +24,11 @@ export default function DenseTable(props) {
         <TableHead>
           <TableRow>
             <TableCell>idUsuario</TableCell>
+            <TableCell align="right">EstadoPago</TableCell>
             <TableCell align="right">plazos</TableCell>
-            <TableCell align="right">pagoState</TableCell>
-            <TableCell align="right">pagoPaid</TableCell>
-            <TableCell align="right">pagoDeadline</TableCell>
+            <TableCell align="right">MontoPago</TableCell>
+            <TableCell align="right">PagoDeadline</TableCell>
+            <TableCell align="right">numeroPlazo</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -36,10 +37,11 @@ export default function DenseTable(props) {
               <TableCell component="th" scope="row">
                 {row.idUsuario}
               </TableCell>
-              <TableCell align="right">{row.plazos}</TableCell>
-              <TableCell align="right">{row.pagoState}</TableCell>
-              <TableCell align="right">{row.pagoPaid}</TableCell>
-              <TableCell align="right">{row.pagoDeadline}</TableCell>
+              <TableCell align="right">{row.EstadoPago}</TableCell>
+              <TableCell align="right">{row.numeroPlazo}</TableCell>
+              <TableCell align="right">{row.MontoPago}</TableCell>
+              <TableCell align="right">{row.PagoDeadline}</TableCell>
+              <TableCell align="right">{row.numeroPlazo}</TableCell>
             </TableRow>
           ))}
         </TableBody>

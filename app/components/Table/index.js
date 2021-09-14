@@ -15,11 +15,17 @@ function Table(props) {
         title="Usuarios"
         columns={[
           { title: 'Id', field: 'idUsuario' },
-          { title: 'Nombre', field: 'firstName' },
-          { title: 'Apellidos', field: 'lastName' },
-          { title: 'creditAmount', field: 'creditAmount' },
-          { title: 'creditaccumulated', field: 'creditaccumulated' },
-          { title: 'creditDeadline', field: 'creditDeadline' },
+          { title: 'Nombre', field: 'Nombre' },
+          { title: 'Apellidos', field: 'Apellido' },
+          { title: 'Grupo', field: 'Grupo' },
+          { title: 'Nombre grupo', field: 'nombre grupo' },
+          { title: 'numeroTelefono', field: 'numeroTelefono' },
+          { title: 'creditoAcumulado', field: 'creditoAcumulado' },
+          { title: 'creditoCuota', field: 'creditoCuota' },
+          { title: 'creditoDesembolso', field: 'creditoDesembolso' },
+          { title: 'creditoFinaliza', field: 'creditoFinaliza' },
+          { title: 'creditoTotal', field: 'creditoTotal' },
+          { title: 'creditoDesembolso', field: 'creditoDesembolso' },
         ]}
         data={props.data.dataUsario}
         detailPanel={[
@@ -28,7 +34,7 @@ function Table(props) {
             render: rowData => (
               <div
                 style={{
-                  fontSize: 1,
+                  fontSize: 2,
                   textAlign: 'center',
                   color: 'white',
                   backgroundColor: '#43A047',
