@@ -20,7 +20,7 @@ export function* saveCsvSaga(action) {
   const formData = new FormData();
   formData.append(`file`, file);
   try {
-    const requestURL = `http://18.188.198.103/api/v1/upload`;
+    const requestURL = `https://convertidor.progresemosdashboard.com/api/v1/upload`;
     /* eslint-disable react/prefer-stateless-function */
     const response = yield call(request, requestURL, {
       method: 'POST',

@@ -17,17 +17,27 @@ function Table(props) {
           { title: 'Id', field: 'idUsuario' },
           { title: 'Nombre', field: 'Nombre' },
           { title: 'Apellidos', field: 'Apellido' },
+          { title: 'Fecha de nacimiento', field: 'fechanacimiento' },
           { title: 'Grupo', field: 'Grupo' },
-          { title: 'Nombre grupo', field: 'nombre grupo' },
+          { title: 'Nombre grupo', field: 'nombreGrupo' },
           { title: 'numeroTelefono', field: 'numeroTelefono' },
-          { title: 'creditoAcumulado', field: 'creditoAcumulado' },
+          { title: 'numeroTelefono', field: 'numeroTelefono' },
+          { title: 'IDREGION', field: 'IDREGION' },
+          { title: 'Plazos', field: 'Plazos' },
           { title: 'creditoCuota', field: 'creditoCuota' },
+          { title: 'MontoPagareGrupal', field: 'MontoPagareGrupal' },
           { title: 'creditoDesembolso', field: 'creditoDesembolso' },
           { title: 'creditoFinaliza', field: 'creditoFinaliza' },
-          { title: 'creditoTotal', field: 'creditoTotal' },
-          { title: 'creditoDesembolso', field: 'creditoDesembolso' },
+          {
+            title: 'creditoSaldoPagareGrupal',
+            field: 'creditoSaldoPagareGrupal',
+          },
+          { title: 'creditoTotalGrupal', field: 'creditoTotalGrupal' },
+          { title: 'montoPagare', field: 'montoPagare' },
+          { title: 'pagadoPagare', field: 'pagadoPagare' },
+          { title: 'saldoPagare', field: 'saldoPagare' },
         ]}
-        data={props.data.dataUsario}
+        data={props.data.dataUsuario}
         detailPanel={[
           {
             tooltip: 'Show Name',

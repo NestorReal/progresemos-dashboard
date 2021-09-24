@@ -25,10 +25,9 @@ export default function DenseTable(props) {
           <TableRow>
             <TableCell>idUsuario</TableCell>
             <TableCell align="right">EstadoPago</TableCell>
-            <TableCell align="right">plazos</TableCell>
             <TableCell align="right">MontoPago</TableCell>
             <TableCell align="right">PagoDeadline</TableCell>
-            <TableCell align="right">numeroPlazo</TableCell>
+            <TableCell align="right">Monto cuota individual</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,10 +37,11 @@ export default function DenseTable(props) {
                 {row.idUsuario}
               </TableCell>
               <TableCell align="right">{row.EstadoPago}</TableCell>
-              <TableCell align="right">{row.numeroPlazo}</TableCell>
               <TableCell align="right">{row.MontoPago}</TableCell>
               <TableCell align="right">{row.PagoDeadline}</TableCell>
-              <TableCell align="right">{row.numeroPlazo}</TableCell>
+              <TableCell align="right">
+                {row['Monto cuota individual']}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
